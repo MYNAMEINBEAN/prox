@@ -4,56 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Embed Iframe</title>
+    <style>
+        iframe {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 600px;
+            height: 400px;
+            border: none;
+        }
+    </style>
 </head>
 <body>
-    <p>Your browser does not support iframes.</p>
     <script>
-        // Base64 encoded URL
-        var encodedUrl = "aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1kQW5jb0V0TXB0VjNmcjFmZGJu";
+        // Base64 encoded URL parts
+        var part1 = "aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1kQW5jb0V0TXB0VjNmcjFmZGJu";
+        var part2 = "";
 
         // Function to decode Base64
         function decodeBase64(str) {
             return atob(str);
         }
 
-        // Decode the URL
-        var decodedUrl = decodeBase64(encodedUrl);
-
-        // Ensure the URL is properly formatted
-        if (!decodedUrl.startsWith("http://") && !decodedUrl.startsWith("https://")) {
-            decodedUrl = "https://" + decodedUrl;
-        }
-
-        // Create the iframe element
-        var iframe = document.createElement("iframe");
-        iframe.src = decodedUrl;
-        iframe.width = "600";
-        iframe.height = "400";
-        iframe.style.border = "none";
-        iframe.style.display = "block"; // Ensure the iframe is visible
-        iframe.style.position = "absolute"; // Position the iframe absolutely
-        iframe.style.top = "0"; // Position at the top
-        iframe.style.left = "0"; // Position at the left
-
-        // Append the iframe to the body
-        document.body.appendChild(iframe);
+        // Decode the URL parts
+        var decodedUrl = decodeBase64(part1 + part2);
 
         // Function to obfuscate the iframe creation
         function createIframe(url) {
             var iframe = document.createElement("iframe");
             iframe.src = url;
-            iframe.width = "600";
-            iframe.height = "400";
-            iframe.style.border = "none";
-            iframe.style.display = "block";
-            iframe.style.position = "absolute";
-            iframe.style.top = "0";
-            iframe.style.left = "0";
             document.body.appendChild(iframe);
         }
 
-        // Call the obfuscated function to create the iframe
-        createIframe(decodedUrl);
+        // Obfuscate the function call
+        var funcName = "createIframe";
+        var urlVar = "decodedUrl";
+        var funcCall = funcName + "(" + urlVar + ")";
+        eval(funcCall);
     </script>
 </body>
 </html>
