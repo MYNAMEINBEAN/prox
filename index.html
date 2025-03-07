@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embed Iframe</title>
+    <title>Embed Iframe via Proxy</title>
     <style>
         iframe {
             display: block;
@@ -18,19 +18,21 @@
 </head>
 <body>
     <script>
-        // Base64 encoded URL parts
-        var part1 = "aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1kQW5jb0V0TXB0VjNmcjFmZGJu";
-        var part2 = "";
+        // Base64 encoded URL part for YouTube video
+        var videoId = "dAnc0EtMptV3fr1fdn"; // Example video ID
 
         // Function to decode Base64
         function decodeBase64(str) {
             return atob(str);
         }
 
-        // Decode the URL parts
-        var decodedUrl = decodeBase64(part1 + part2);
+        // Proxy URL
+        var proxyUrl = "https://yt-proxy.com/embed/";
 
-        // Function to obfuscate the iframe creation
+        // Full URL to embed
+        var fullUrl = proxyUrl + videoId;
+
+        // Function to create and append the iframe
         function createIframe(url) {
             var iframe = document.createElement("iframe");
             iframe.src = url;
@@ -39,7 +41,7 @@
 
         // Obfuscate the function call
         var funcName = "createIframe";
-        var urlVar = "decodedUrl";
+        var urlVar = "fullUrl";
         var funcCall = funcName + "(" + urlVar + ")";
         eval(funcCall);
     </script>
