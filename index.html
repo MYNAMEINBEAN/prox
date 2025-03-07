@@ -19,6 +19,11 @@
         // Decode the URL
         var decodedUrl = decodeBase64(encodedUrl);
 
+        // Ensure the URL is properly formatted
+        if (!decodedUrl.startsWith("http://") && !decodedUrl.startsWith("https://")) {
+            decodedUrl = "https://" + decodedUrl;
+        }
+
         // Create the iframe element
         var iframe = document.createElement("iframe");
         iframe.src = decodedUrl;
